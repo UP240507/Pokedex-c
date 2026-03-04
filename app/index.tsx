@@ -3,7 +3,7 @@ import { View } from "react-native";
 import PokemonCard from "./components/PokemonCard";
 
 export default function Index() {
-  const [results, setResults] = useState<any[]>([null]);
+  const [results, setResults] = useState<any[]>([]);
 
   useEffect(() => {
     getPokemons();
@@ -11,7 +11,7 @@ export default function Index() {
   }, []);
   const getPokemons = async () => {
     try {
-      const URL = "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0";
+      const URL = "https://pokeapi.co/api/v2/pokemon?limit=10&offset=0";
       const response = await fetch(URL, {
         method: "GET",
       });
@@ -25,19 +25,17 @@ export default function Index() {
     } catch (error) {
       console.log("Error fetching pokemons:", error);
     }
-
-    const handlePress = () => {
-      console.log("Botón presionado");
-    };
-
-    return (
-      <View>
-        {results.map((item) => {
-          return (
-            <PokemonCard key={item.name} name={item.name} URL={item.url} />
-          );
-        })}
-      </View>
-    );
   };
+
+  const handlePress = () => {
+    console.log("Botón presionado");
+  };
+
+  return (
+    <View>
+      {results.map((item) => {
+        return <PokemonCard key={item.name} name={item.name} URL={item.url} />;
+      })}
+    </View>
+  );
 }
