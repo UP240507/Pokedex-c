@@ -1,10 +1,10 @@
 import React from "react";
 import { Text, View } from "react-native";
 
-export default function NewScreen() {
+export default function NewnScreen() {
   return (
     <View>
-      <Text>New-Scree</Text>
+      <Text>New-Screen</Text>
     </View>
   );
 }

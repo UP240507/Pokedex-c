@@ -1,5 +1,5 @@
-import React from "react";
 import { router } from "expo-router";
+import React from "react";
 import { Image, Pressable, StyleSheet, Text } from "react-native";
 
 interface PokemonCardProps {
@@ -12,8 +12,13 @@ export default function PokemonCard(props: PokemonCardProps) {
   const pokemonImageURL = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
   return (
     <Pressable
-      onPress={() => router.push("/New-Screen")}
-      style={styles.pressableStyle}
+      onPress={() => router.push(`/Pokemon/${props.name}`)}
+      style={({ pressed }) => [
+        styles.pressableStyle,
+        pressed && {
+          opacity: 0.5,
+        },
+      ]}
     >
       <Image
         source={{ uri: pokemonImageURL }}
